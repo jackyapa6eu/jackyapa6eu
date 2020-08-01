@@ -1,0 +1,26 @@
+.main-content__title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  margin-bottom: 3vw;
+  font-size: 76px;
+  text-shadow: 10px 10px 8px black;
+}
+
+@media screen and (max-width: 800px) {
+  .main-content__title {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .main-content__title {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main-content__title {
+    font-size: 35px;
+  }
+}

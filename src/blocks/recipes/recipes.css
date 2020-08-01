@@ -1,0 +1,37 @@
+@import url(./__item/recipes__item.css);
+@import url(./__bg-box/recipes__bg-box.css);
+@import url(./__title/recipes__title.css);
+
+.recipes {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 240px);
+  margin: 0 auto;
+  column-gap: 35px;
+  font-family: 'Noto Sans';
+}
+
+@media screen and (max-width: 1116px) {
+  .recipes {
+    grid-template-columns: repeat(auto-fit, 284px);
+  }
+}
+
+@media screen and (max-width: 979px) {
+  .recipes {
+    grid-template-columns: repeat(auto-fit, 320px);
+  }
+}
+
+@media screen and (max-width: 727px) {
+  .recipes {
+    grid-template-columns: repeat(auto-fit, 420px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .recipes {
+    grid-template-columns: repeat(auto-fit, 100%);
+  }
+}

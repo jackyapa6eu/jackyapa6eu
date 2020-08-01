@@ -1,0 +1,11 @@
+.user-section__question-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 2s linear, font-weight .5s linear, text-shadow 2s linear;
+}
+
+.user-section__question-btn:hover {
+  font-weight: bold;
+  color: white;
+  text-shadow: 10px 10px 8px black;
+}

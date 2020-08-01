@@ -1,0 +1,18 @@
+@import url(./__form/user-section__form.css);
+@import url(./__input/user-section__input.css);
+@import url(./__title/user-section__title.css);
+@import url(./__question/user-section__question.css);
+@import url(./__error-message/user-section__error-message.css);
+@import url(./__btn/user-section__btn.css);
+@import url(./__question-btn/user-section__question-btn.css);
+
+.user-section {
+  background: #121016;
+  display: flex;
+  position: relative;
+  padding: 15px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 55vh;
+}

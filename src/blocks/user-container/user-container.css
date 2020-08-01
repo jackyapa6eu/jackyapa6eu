@@ -1,0 +1,14 @@
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-basis: 50vh;
+  min-height: 72vh;
+}
+
+@media screen and (max-width: 680px) {
+  .user-container {
+    padding-left: 2vw;
+    padding-right: 10vw;
+  }
+}

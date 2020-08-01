@@ -1,0 +1,8 @@
+.cheat-sheet__code {
+  color: #e8912d;
+  border-radius: 5px;
+  padding: 2px 3px 1px;
+  border: solid 1px rgba(232, 232, 232, .13);
+  background: rgba(232, 232, 232, .04);
+  line-height: 1.9;
+}

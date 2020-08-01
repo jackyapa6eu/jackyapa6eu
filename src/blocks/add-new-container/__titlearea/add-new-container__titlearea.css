@@ -1,0 +1,15 @@
+.add-new-container__titlearea {
+  border: none;
+  border-bottom: solid 4px #D1D2D3;
+  background: none;
+  color: white;
+  padding: 1% 1%;
+  font-size: 20px;
+  line-height: 1;
+  resize: none;
+  box-sizing: border-box;
+
+}
+.add-new-container__titlearea:focus {
+  outline: none;
+}

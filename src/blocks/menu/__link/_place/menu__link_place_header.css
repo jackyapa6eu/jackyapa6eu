@@ -1,0 +1,9 @@
+.menu__link_place_header {
+  transition: color 2s linear, font-weight .5s linear, text-shadow 2s linear;
+}
+
+.menu__link_place_header:hover {
+  font-weight: bold;
+  color: white;
+  text-shadow: 10px 10px 8px black;
+}

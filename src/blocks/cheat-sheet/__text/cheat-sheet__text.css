@@ -1,0 +1,5 @@
+.cheat-sheet__text {
+  overflow: hidden;
+  max-height: 300vh;
+  font-family: 'Noto Sans';
+}

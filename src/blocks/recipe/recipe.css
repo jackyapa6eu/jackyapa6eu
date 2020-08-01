@@ -1,0 +1,16 @@
+@import url(./__image/recipe__image.css);
+@import url(./__composition/recipe__composition.css);
+@import url(./__composition-item/recipe__composition-item.css);
+@import url(./__dots/recipe__dots.css);
+@import url(./__ingredients/recipe__ingredients.css);
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 90%;
+  padding: 2% 10% 2% 10%;
+  margin: 0 auto;
+  white-space: pre-line;
+  font-family: 'Noto Sans';
+}

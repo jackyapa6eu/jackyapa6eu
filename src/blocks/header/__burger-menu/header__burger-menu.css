@@ -1,0 +1,26 @@
+.header__burger-menu {
+  width: 50px;
+  height: 50px;
+  background-image: url(../../../assets/burder-menu.png);
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+}
+
+.header__burger-menu-checkbox {
+  display: none;
+}
+
+@media screen and (max-width: 650px) {
+  .header__burger-menu {
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 2vh;
+  }
+  .header__burger-menu-checkbox:checked ~ .header__burger-menu {
+    background-image: url(../../../assets/burder-menu-close.png);
+  }
+}

@@ -1,0 +1,24 @@
+@import url(./_place/nav_place_header.css);
+
+
+@media screen and (max-width: 650px) {
+  .nav {
+    padding-bottom: 1vh;
+    display: none;
+  }
+  .header__burger-menu-checkbox:checked ~ .nav {
+    display: block;
+    animation: appearing .5s ease-out 1;
+  }
+
+}
+
+@keyframes appearing {
+  0% {
+    margin-top: -80%;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+

@@ -1,0 +1,10 @@
+.header__logo-burger {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 650px) {
+  .header__logo-burger {
+    width: 90%;
+  }
+}

@@ -1,0 +1,12 @@
+.add-new-container__textarea {
+  border: none;
+  background: none;
+  color: white;
+  padding: 1%;
+  min-height: calc(80vh - 205px);
+  resize: none;
+}
+
+.add-new-container__textarea:focus {
+  outline: none;
+}
