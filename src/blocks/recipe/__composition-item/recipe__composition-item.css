@@ -4,8 +4,10 @@
   justify-content: space-between;
   white-space: nowrap;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .recipe__composition-item:last-of-type {
   margin-bottom: 0;
 }
+

@@ -1,16 +1,35 @@
 <template>
-  <div class="add-new-recipe border" style="min-height: 80vh;">
+  <div class="add-new-recipe" style="min-height: 80vh; border: solid 2px purple">
+    <label>Название рецепта</label>
     <input type="text" placeholder="название рецепта" v-model="newRecipe.name">
+    <label>время приготовления</label>
     <input type="text" placeholder="время приготовления" v-model="newRecipe.time">
+
+    <input type="radio" id="meal" value="meal" v-model="newRecipe.type" checked>
+    <label for="meal">Блюдо</label>
+    <input type="radio" id="cake" value="cake" v-model="newRecipe.type">
+    <label for="cake">Торт</label>
+    <label v-if="newRecipe.type === 'cake'">Диаметр кольца</label>
+    <label v-else>Количество порций</label>
     <input type="number" placeholder="количество порций" v-model="newRecipe.portions">
-    <p>Ингридиенты</p>
-    <div v-for="(ingridient, index) in newRecipe.ingridients" v-bind:key="'index_' + index" style="display: flex">
-      <input type="text" placeholder="название ингридиента" v-model="ingridient.name">
-      <input type="number" placeholder="количество" v-model="ingridient.count">
-      <input type="text" placeholder="ед. измерения" v-model="ingridient.unit">
+    <p>Ингридиенты</p> 
+    <div v-for="(item, index) in newRecipe.ingridientsFor" v-bind:key="'i_' + index" style="display: flex; flex-direction: column;  margin-bottom: 30px; border: solid 3px red" >
+      {{item.name}}
+      <div v-for="(ingridient, index) in item.ingridients" v-bind:key="'index_' + index" style="display: flex; flex-direction: column;margin: 0 auto; margin-bottom: 20px; width: 70%; border: solid 3px green">
+        <label style="width: 100%;">Название ингридиента</label>
+        <input type="text" placeholder="название ингридиента" v-model="ingridient.name" required>
+        <label style="width: 100%;">Количество</label>
+        <input type="number" placeholder="количество" v-model="ingridient.count">
+        <label style="width: 100%;">Единицы измерения</label>
+        <input type="text" placeholder="ед. измерения" v-model="ingridient.unit">
+      </div>
+      <button @click="addIngridient(item.ingridients)">Добавить Ингридиент</button>
+      <textarea v-model="item.text"></textarea>
+      
     </div>
-    <div style="display: flex">
-      <span @click="addIngridient()">___+____</span>||<span @click="deleteIngridient()">___-____</span>
+    <div>
+      <button @click="addSubRecipe">Добавить подрецепт для</button> 
+      <input type="text" placeholder="название подрецепта" v-model="subRecipeName"> 
     </div>
     <input class="" type="file" id="file" ref="myFiles" @change="uploadImage()" accept="image/jpeg,image/png">
     <div v-for="(img, index) in newRecipe.images" v-bind:key="index">
@@ -19,49 +38,6 @@
     <textarea v-model="newRecipe.text"></textarea>
     <span @click="sendNewRecipe()">____SEND NEW RECIPE____</span>
   </div>
-<!---
-  <article class="recipe border">
-    <h2 class="recipe__title">Простой и вкусный рецепт куриных крылышек.</h2>
-    <p><span>Время приготовления:</span> <span>50 минут</span></p>
-    <img class="recipe__image" src="../assets/recipe-main-image.jpg">
-    <div class="recipe__composition">
-      <div class="recipe__ingredients">
-        <span>Ингридиенты</span>
-        <div class="recipe__portions">
-          <span>Порций</span>
-          <span> - </span>
-          <span> 5 </span>
-          <span> + </span>
-        </div>
-      </div>
-      <div class="recipe__composition-item">
-        <span>Курочка</span>
-        <div class="recipe__dots"></div>
-        <span>250г</span>
-      </div>
-      <div class="recipe__composition-item">
-        <span>Соевый соус</span>
-        <div class="recipe__dots"></div>
-        <span>50 мл</span>
-      </div>
-      <div class="recipe__composition-item">
-        <span>Чеснок</span>
-        <div class="recipe__dots"></div>
-        <span>2 зубчика</span>
-      </div>
-    </div>
-    <img class="recipe__image" src="../assets/recipe-sostav-image.jpg">
-      Куриные крылышки выложить в глубокую посуду.
-      Подавить чеснок, залить соевый соус, перемешать и оставить мариноваться на 15 минут.
-      Еще раз перемешать и мариновать еще минимум 15 минут.
-      Духовку разогреть до 180С* на режиме конвекции.
-      Выложить курицу на противень, предварительно постелив фальгу.
-      Жарить в течение 50 минут.
-      После первых 25-ти минут перевернуть крылышки.
-      Через 50 минут курочка готова!
-      Вы великолепны!
-  </article>
-  --->
 </template>
 
 <script>
@@ -69,20 +45,15 @@ export default {
   name: 'new-recipe',
   data () {
     return {
+      subRecipeName: '',
       newRecipe: {
+        type: 'meal',
         name: '',
         time: '',
         portions: 0,
         images: [],
         text: '',
-        ingridients: [
-          {
-            name: '',
-            count: 0,
-            unit: '',
-            inStock: false
-          }
-        ]
+        ingridientsFor: [],
       },
 
     }
@@ -91,13 +62,28 @@ export default {
     this.$root.location = 'new-recipe';
   },
   methods: {
-    addIngridient() {
-      this.newRecipe.ingridients.push({
+    addIngridient(arr) {
+      arr.push({
         name: '',
         count: 0,
         unit: '',
-        inStock: false
       })
+    },
+    addSubRecipe() {
+      this.newRecipe.ingridientsFor.push(
+        {
+        name: this.subRecipeName,
+        ingridients: [
+          {
+            name: '',
+            count: 0,
+            unit: '',
+          },
+        ],
+        text: ''
+        }
+      )
+      this.subRecipeName = '';
     },
     deleteIngridient() {
       this.newRecipe.ingridients.pop();
@@ -118,6 +104,9 @@ export default {
       this.newRecipe.text += `<img class="recipe__image" src="${url}" alt="картинка рецепта">`;
     },
     sendNewRecipe() {
+      if (this.newRecipe.name === '') {
+        return
+      }
         let updates = {};
         updates['recipes/' + this.$root.translit(this.newRecipe.name)] = this.newRecipe;
 
@@ -132,7 +121,7 @@ export default {
   .add-new-recipe {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
   }
 </style>

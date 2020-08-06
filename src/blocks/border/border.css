@@ -1,6 +1,0 @@
-.border {
-  border: solid;
-  border-image-source: url(../../assets/border.png);
-  border-image-width: 15px;
-  border-image-slice: 49%;
-}

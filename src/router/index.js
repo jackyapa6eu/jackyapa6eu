@@ -6,6 +6,7 @@ import frontEnd from '@/components/front-end.vue'
 import recipes from '@/components/recipes.vue'
 import recipe from '@/components/recipe.vue'
 import newRecipe from '@/components/add-new-recipe.vue'
+import music from '@/components/music.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/add-new-recipe',
       name: 'add-new-recipe',
       component: newRecipe
+    },
+    {
+      path: '/music',
+      name: 'music',
+      component: music
     }
   ]
 })

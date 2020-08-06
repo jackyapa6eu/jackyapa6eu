@@ -36,6 +36,7 @@ export default {
             recipe.id = Object.keys(obj)[i];
             self.recipes.unshift(recipe);
         }
+        console.log(self.recipes);
     });
   },
   methods: {

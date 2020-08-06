@@ -73,7 +73,6 @@ export default {
       this.addNewCheatSheet = !this.addNewCheatSheet;
     },
     sendCheatSheet() {
-      console.log('sendCheatSheet()');
       if (this.newCheatSheetText === '') {
           return
       }
@@ -95,7 +94,6 @@ export default {
     }
   },
   mounted() {
-    console.log('front-end mounted');
     this.$root.location = 'frontEnd';
     const self = this;
     let cheatSheetsRef = firebase.database().ref('frontEnd/');

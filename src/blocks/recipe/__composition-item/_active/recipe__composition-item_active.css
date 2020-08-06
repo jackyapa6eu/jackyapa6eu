@@ -1,0 +1,5 @@
+.recipe__composition-item_active {
+    border-radius: 5px;
+    background: #D1D2D3;
+    color: #19171D;
+}

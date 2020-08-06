@@ -3,3 +3,9 @@
   max-width: 80%;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 550px) {
+  .recipe__image {
+    max-width: 95%;
+  }
+}

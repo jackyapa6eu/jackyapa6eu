@@ -1,4 +1,8 @@
 .recipe__dots {
-  border-bottom: 4px dotted white;
+  border-bottom: 2px dotted white;
   width: 100%;
+}
+
+.recipe__composition-item_active .recipe__dots {
+  border-bottom: 2px dotted #19171D;
 }

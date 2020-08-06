@@ -79,11 +79,12 @@ export default {
 @import url(./blocks/menu/menu.css);
 @import url(./blocks/main-content/main-content.css);
 @import url(./blocks/footer/footer.css);
-@import url(./blocks/border/border.css);
 @import url(./blocks/user-container/user-container.css);
 @import url(./blocks/user-section/user-section.css);
 @import url(./blocks/front-end/front-end.css);
 @import url(./blocks/decor/decor.css);
+@import url(./blocks/spoiler-container/spoiler-container.css);
+
 * {
   box-sizing: border-box;
 }
