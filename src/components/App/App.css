@@ -1,0 +1,5 @@
+.App {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: rgb(172, 102, 213, .4);
+}
