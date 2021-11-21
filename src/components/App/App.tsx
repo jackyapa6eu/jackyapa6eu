@@ -9,6 +9,7 @@ import Header from '../Header/Header';
 import MainPage from '../MainPage/MainPage';
 import { Route, Switch } from 'react-router-dom';
 import Contacts from '../Contacts/Contacts';
+import Portfolio from '../Portfolio/Portfolio';
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route exact path="/contacts">
           <Contacts/>
+        </Route>
+        <Route exact path="/portfolio">
+          <Portfolio/>
         </Route>
       </Switch>
       

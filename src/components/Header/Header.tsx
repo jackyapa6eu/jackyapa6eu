@@ -36,7 +36,7 @@ const Header: FC = () => {
       <div className={itemsSelector} onMouseOver={showMenu} onMouseLeave={hideMenu}>
         <Link to="/" className="header__item" style={transitionDuration(1)}>ДОМОЙ</Link>
         <Link to="/" className="header__item" style={transitionDuration(2)}>ОБО МНЕ</Link>
-        <Link to="/" className="header__item" style={transitionDuration(3)}>РАБОТЫ</Link>
+        <Link to="/portfolio" className="header__item" style={transitionDuration(3)}>РАБОТЫ</Link>
         <Link to="/contacts" className="header__item" style={transitionDuration(4)}>КОНТАКТЫ</Link>
       </div>
     </header>

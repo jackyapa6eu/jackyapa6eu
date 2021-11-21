@@ -1,0 +1,49 @@
+.portfolio {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10% 80px;
+  font-family: 'Consolas', monospace;
+  color: white;
+  text-shadow: 0 0 8px black;
+  box-sizing: border-box;
+}
+
+.portfolio::before {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../images/contacts__bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(.4);
+  z-index: -1;
+}
+
+.portfolio__title {
+  position: relative;
+  margin: 0;
+  font-weight: 400;
+  font-size: 35px;
+  z-index: 2;
+}
+
+.portfolio__title::before {
+  content: '';
+  position: absolute;
+  bottom: 2%;
+  left: -5%;
+  width: 110%;
+  height: 25%;
+  background: #FFA200;
+  z-index: -1;
+}

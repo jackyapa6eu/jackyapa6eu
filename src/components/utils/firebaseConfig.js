@@ -7,3 +7,20 @@ export const firebaseConfig = {
   messagingSenderId: "487808843024",
   appId: "1:487808843024:web:1f7ec5914f3b4495e33995"
 };
+
+/*
+
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null",
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+
+*/
