@@ -4,12 +4,10 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 import './App.css';
-import { firebaseConfig } from '../utils/firebaseConfig';
+import { firebaseConfig } from '../../utils/firebaseConfig';
 import Header from '../Header/Header';
 import MainPage from '../MainPage/MainPage';
-import { Route, 
-  Switch
-} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Contacts from '../Contacts/Contacts';
 import Portfolio from '../Portfolio/Portfolio';
 import classNames from 'classnames';
@@ -31,6 +29,9 @@ function App() {
       <div className={mainContentSelectors}>
         <Switch>
           <Route exact path="/">
+            <MainPage/>
+          </Route>
+          <Route exact path="/about">
             <MainPage/>
           </Route>
           <Route exact path="/contacts">

@@ -5,7 +5,6 @@ import App from './components/App/App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './vendor/normalize.css';
 import './vendor/fonts/fonts.css';
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,4 +15,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals();
