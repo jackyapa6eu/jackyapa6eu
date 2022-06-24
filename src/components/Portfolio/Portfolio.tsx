@@ -1,5 +1,5 @@
 import Project from '../Project/Project';
-import { portfolioItems } from '../utils/portfolioItems.js'
+import { portfolioItems } from '../../utils/portfolioItems.js'
 import './Portfolio.css';
 
 function Portfolio() {

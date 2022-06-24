@@ -1,7 +1,7 @@
 import './Project.css';
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import { IProps } from '../utils/interfaces'
+import { IProps } from '../../utils/interfaces'
 
 
 

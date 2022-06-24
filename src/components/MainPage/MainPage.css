@@ -1,4 +1,4 @@
-.main-page { 
+.main-page {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -35,4 +35,8 @@
   margin: 0;
   font-weight: 400;
   font-size: 24px;
+}
+
+.job-item {
+  background: wheat;
 }

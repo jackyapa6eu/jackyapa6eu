@@ -22,3 +22,13 @@ export interface Iproject {
 export interface IProps {
   data: Iproject;
 }
+
+interface ILink {
+  type: string,
+  url: string,
+  urlText: string
+}
+
+export interface IProjectLinkProps {
+  data: ILink;
+}
