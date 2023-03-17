@@ -19,6 +19,7 @@ class MyDocument extends Document {
         accurateTrackBounce:true
    });
           `}} />
+                    <title>JackYapa6eu</title>
                 </Head>
                 <body>
                 <Main />
