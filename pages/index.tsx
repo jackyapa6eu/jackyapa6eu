@@ -5,7 +5,7 @@ import MyDocument from './_document';
 const HomePage = ({message}) => {
     return (
         <div>
-            <MyDocument __NEXT_DATA__={}/>
+            <img src="https://mc.yandex.ru/watch/92850603" style="position:absolute; left:-9999px;" alt="" />
             <h1>Hello, world! message: </h1>
             <Card msg={message}/>
         </div>
