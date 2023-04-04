@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Card from "../src/components/Card";
 import { QrReader}  from 'react-qr-reader';
 import "webrtc-adapter/out/adapter.js";
-
+///
 const HomePage = ({message = 'xxx'}) => {
     const [result, setResult] = useState('');
     const handleScan = (data) => {
