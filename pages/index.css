@@ -1,0 +1,9 @@
+
+body {
+    background: #1A1A1A;
+}
+
+* {
+    font-family: 'Fira Code', monospace;
+    box-sizing: border-box;
+}
