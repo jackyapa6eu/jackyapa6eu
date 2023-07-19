@@ -10,7 +10,13 @@ const StyledSvg = styled.svg`
   cursor: pointer;
 `;
 
-const BurgerMenu: FC = ({ w = 32, h = 32, color = '#dcdcdc' }) => {
+interface IBurgerMenu {
+  w: number;
+  h: number;
+  color: string;
+}
+
+const BurgerMenu: FC<IBurgerMenu> = ({ w = 32, h = 32, color = '#dcdcdc' }) => {
   const dispatch = useAppDispatch();
 
   const handleOpenModal = () => {
