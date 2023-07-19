@@ -11,9 +11,9 @@ const StyledSvg = styled.svg`
 `;
 
 interface IBurgerMenu {
-  w: number;
-  h: number;
-  color: string;
+  w?: number;
+  h?: number;
+  color?: string;
 }
 
 const BurgerMenu: FC<IBurgerMenu> = ({ w = 32, h = 32, color = '#dcdcdc' }) => {
