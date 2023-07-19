@@ -6,12 +6,6 @@
       "use": "@vercel/node@1.11.0"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/pages/index.tsx"
-    }
-  ],
   "env": {
     "NODE_OPTIONS": "--max-old-space-size=4096"
   },
