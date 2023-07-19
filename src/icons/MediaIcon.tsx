@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
+import { IIcon } from './IIcon';
 
-const MediaIcon: FC = ({ color = '#dcdcdc' }) => {
+const MediaIcon: FC<IIcon> = ({ color = '#dcdcdc' }) => {
   return (
     <svg width='16' height='21' viewBox='0 0 16 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path

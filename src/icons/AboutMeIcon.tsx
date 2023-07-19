@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
+import { IIcon } from './IIcon';
 
-const AboutMeIcon: FC = ({ color = '#dcdcdc' }) => {
+const AboutMeIcon: FC<IIcon> = ({ color = '#dcdcdc' }) => {
   return (
     <svg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path
