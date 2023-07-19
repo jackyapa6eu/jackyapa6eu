@@ -4,7 +4,7 @@ import { Drawer } from 'antd';
 export const Modal = styled(Drawer)`
   background: #1e1e1e !important;
   box-shadow: 2px 0 8px #996515;
-  height: calc((var(--vh, 1vh) * 100)) !important;
+  height: calc((var(--vh, 1vh) * 70)) !important;
   max-height: 800px;
   margin-bottom: 5vh;
   margin-top: 5vh;
