@@ -91,7 +91,7 @@ const NavigationMenu: FC = () => {
     <Modal
       title='Денисов Евгений'
       placement='left'
-      width={230}
+      width={260}
       onClose={handleCloseModal}
       open={isOpened}
     >
