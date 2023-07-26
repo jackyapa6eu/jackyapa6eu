@@ -5,7 +5,7 @@ import { InfoLinkContainer } from '../styles';
 
 interface IInfoLink {
   title: string;
-  link: url;
+  link: string;
 }
 
 const InfoLink: FC<IInfoLink> = ({ title, link }) => {
