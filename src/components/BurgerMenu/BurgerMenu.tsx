@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../hooks/defaultHooks';
 import { openModal } from '../../store/modalSlice';
 
 const StyledSvg = styled.svg`
-  position: absolute;
+  position: sticky;
   left: 11px;
   top: calc(5vh + 16px);
   cursor: pointer;

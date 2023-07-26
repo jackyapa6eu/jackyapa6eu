@@ -7,6 +7,20 @@ import NavigationMenu from '../src/components/NavigationMenu';
 import BurgerMenu from '../src/components/BurgerMenu';
 import store from '../src/store/store';
 import { Provider } from 'react-redux';
+import styled from 'styled-components';
+
+const PageContentContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: calc(5vh + 16px) 54px 30px 54px;
+  transition: all 0.3s ease;
+  @media screen and (max-width: 758px) {
+    max-width: 100%;
+  }
+`;
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const handleResize = () => {
@@ -28,9 +42,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         style={{ position: 'absolute', left: '-9999px' }}
         alt=''
       />
-      <Component {...pageProps} />
-      <NavigationMenu />
       <BurgerMenu />
+      <PageContentContainer>
+        <Component {...pageProps} />
+      </PageContentContainer>
+      <NavigationMenu />
     </Provider>
   );
 };
