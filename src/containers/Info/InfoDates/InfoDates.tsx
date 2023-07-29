@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface IInfoDates {
   start: number[];
-  end: number[];
+  end?: number[];
 }
 
 const InfoDatesContainer = styled.p`
