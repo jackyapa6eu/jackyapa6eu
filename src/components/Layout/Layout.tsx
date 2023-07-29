@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react';
-import MainContainer from '../../containers';
 import NavigationMenu from '../NavigationMenu';
 import BurgerMenu from '../BurgerMenu';
 
