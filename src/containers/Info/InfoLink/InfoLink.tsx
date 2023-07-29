@@ -1,6 +1,5 @@
 import React from 'react';
 import { FC, memo } from 'react';
-import * as url from 'url';
 import { InfoLinkContainer } from '../styles';
 
 interface IInfoLink {

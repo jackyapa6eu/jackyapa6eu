@@ -4,14 +4,33 @@ export const InfoContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 `;
 
 export const InfoLineContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 5px;
+
+  @media screen and (max-width: 600px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 510px) {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 481px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: 0 0 3px #996515;
+    border-radius: 5px;
+    padding: 2px 2px;
+    & .info__dots {
+      display: none;
+    }
+  }
 `;
 
 export const InfoTitleContainer = styled.div`
@@ -39,9 +58,9 @@ export const InfoTitle = styled.span`
 `;
 
 export const InfoDots = styled.div`
-  border-top: 1px dashed rgba(220, 220, 220, 0.3);
-  width: 100%;
-  height: 50%;
+  border-bottom: 1px dashed rgba(220, 220, 220, 0.3);
+  flex-grow: 1;
+  height: 9px;
 `;
 
 export const InfoLinkContainer = styled.a`

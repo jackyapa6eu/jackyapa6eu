@@ -11,7 +11,7 @@ const InfoLine: FC<IInfoLine> = ({ title, right }) => {
   return (
     <InfoLineContainer>
       <span>{title}</span>
-      <InfoDots />
+      <InfoDots className='info__dots' />
       {right}
     </InfoLineContainer>
   );

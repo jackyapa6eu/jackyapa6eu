@@ -10,4 +10,12 @@ export const AboutMeParagraph = styled.p`
   margin: 0;
   font-size: 14px;
   font-weight: 400;
+
+  @media screen and (max-width: 600px) {
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 510px) {
+    font-size: 12px;
+  }
 `;
