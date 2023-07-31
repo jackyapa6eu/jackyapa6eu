@@ -42,6 +42,7 @@ export default class MyDocument extends Document {
             name='google-site-verification'
             content='zqJO3khi4fmCTk3uq31wXlp_CUXE7tdgnNgrjmRlM-g'
           />
+          <meta name='yandex-verification' content='0e1091a58f4ddeca' />
           <script
             dangerouslySetInnerHTML={{
               __html: `
