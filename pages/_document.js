@@ -38,6 +38,10 @@ export default class MyDocument extends Document {
             name='description'
             content='Денисов Евгений. Frontend разработчик. https://t.me/jackyapa6eu'
           />
+          <meta
+            name='google-site-verification'
+            content='zqJO3khi4fmCTk3uq31wXlp_CUXE7tdgnNgrjmRlM-g'
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `
