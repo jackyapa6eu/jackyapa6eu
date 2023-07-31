@@ -5,6 +5,7 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 100%;
 `;
 
 export const InfoLineContainer = styled.div`

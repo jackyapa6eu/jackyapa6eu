@@ -32,6 +32,12 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel='icon' href='/favicon.png' />
+          <title>Денисов Евгений. Frontend developer. jackyapa6eu</title>
+          <meta
+            name='description'
+            content='Денисов Евгений. Frontend разработчик. https://t.me/jackyapa6eu'
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -49,7 +55,9 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+          <script src='https://api-maps.yandex.ru/v3/?apikey=7df7c647-19ce-4160-b9ee-cf7ef1a51a53&lang=ru_RU'></script>
         </Head>
+
         <body>
           <Main />
           <NextScript />
