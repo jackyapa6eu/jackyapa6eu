@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-const StyledLink = styled(Link)`
+const LinkContainer = styled.div`
   display: flex;
   height: 32px;
   align-items: center;
@@ -42,18 +42,19 @@ const StyledLink = styled(Link)`
 
 interface INavigationButton {
   title: string;
-  path: string;
+  path?: string;
   icon: ReactNode;
 }
 
-const NavigationButton: FC<INavigationButton> = ({ title, path, icon }) => {
-  console.log(location);
-  console.log(path);
+const NavigationButton: FC<INavigationButton> = ({ title, path = '#', icon }) => {
+  // console.log(location);
   return (
-    <StyledLink href={path}>
-      <div>{icon}</div>
-      <span>{title}</span>
-    </StyledLink>
+    <Link href={path}>
+      <LinkContainer>
+        <div>{icon}</div>
+        <span>{title}</span>
+      </LinkContainer>
+    </Link>
   );
 };
 
