@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import { FC, ReactNode } from 'react';
 
-export const Card = styled.div.attrs((p) => ({
-  style: {
-    transform: `perspective(1000px) rotateX(${p.rotation.x}deg) rotateY(${p.rotation.y}deg)`,
-  },
-}))`
+interface ICard {
+  rotation: {
+    x: number;
+    y: number;
+  };
+  // children: ReactNode;
+  // onMouseMove: (event: MouseEvent) => void;
+  // onMouseLeave: () => void;
+}
+
+export const Card = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'image title';

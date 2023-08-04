@@ -11,16 +11,16 @@ export const PortfolioContainer = styled.div`
 `;
 
 const arr = [
-  { id: 1, title: 'Активный гражданин 2025', image: portfolioActiveCitizenImage },
-  { id: 2, title: 'Активный гражданин 2025', image: portfolioActiveCitizenImage },
-  { id: 3, title: 'Активный гражданин 2025', image: portfolioActiveCitizenImage },
+  { id: 1, title: 'Активный гражданин 2025' },
+  { id: 2, title: 'Активный гражданин 2025' },
+  { id: 3, title: 'Активный гражданин 2025' },
 ];
 
 const Portfolio = () => {
   return (
     <PortfolioContainer>
       {arr.map((card) => (
-        <PortfolioItem key={card.id} title={card.title} img={card.image} />
+        <PortfolioItem key={card.id} title={card.title} />
       ))}
     </PortfolioContainer>
   );

@@ -1,18 +1,19 @@
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo, MouseEventHandler, useState } from 'react';
 import { Card, CardImage, CardImageContainer, CardTitle } from './styles';
 import portfolioActiveCitizenImage from '../../images/portfolioActiveCitizenImage.png';
-import Color, { ColorThief } from 'color-thief-react';
 
 interface IPortfolioItem {
   title: string;
-  image: string;
 }
 
-const PortfolioItem: FC<IPortfolioItem> = ({ title, image }) => {
+const PortfolioItem: FC<IPortfolioItem> = ({ title }) => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (event) => {
-    const card = event.currentTarget;
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | undefined
+  ): void => {
+    if (!event) return;
+    const card = event.currentTarget as HTMLDivElement;
     const { left, top, width, height } = card.getBoundingClientRect();
     const mouseX = event.clientX - left;
     const mouseY = event.clientY - top;
@@ -30,7 +31,13 @@ const PortfolioItem: FC<IPortfolioItem> = ({ title, image }) => {
     setRotation({ x: 0, y: 0 });
   };
   return (
-    <Card rotation={rotation} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <Card
+      style={{
+        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <CardImageContainer>
         <CardImage src={portfolioActiveCitizenImage.src} alt={title} />
       </CardImageContainer>
