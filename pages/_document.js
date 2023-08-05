@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel='icon' href='/favicon.png' />
-          <title>Денисов Евгений. Frontend developer. jackyapa6eu</title>
+          <title>Денисов Евгений. Frontend разработчик. jackyapa6eu</title>
           <meta
             name='description'
             content='Денисов Евгений. Frontend разработчик. https://t.me/jackyapa6eu'
