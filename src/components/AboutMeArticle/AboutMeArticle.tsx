@@ -17,7 +17,7 @@ const AboutMeArticle: FC = () => {
             <AccentText text='Redux' />, <AccentText text='Redux-Toolkit' />,{' '}
             <AccentText text='MobX' />, <AccentText text='Ant Design' />, <AccentText text='Mui' />,{' '}
             <AccentText text='Vue.js' />, <AccentText text='Git' />, <AccentText text='Node.js' />,{' '}
-            <AccentText text='Express' />.
+            <AccentText text='Express' />.{' '}
           </AboutMeSentence>
         </AboutMeSentence>
         <AboutMeSentence>Всегда готов изучать что-то новое.</AboutMeSentence>
