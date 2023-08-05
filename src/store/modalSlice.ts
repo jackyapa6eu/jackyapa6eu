@@ -6,7 +6,7 @@ interface ModalState {
 }
 
 const initialState: ModalState = {
-  isOpened: true,
+  isOpened: false,
   content: null,
 };
 
