@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PortfolioItem from '../src/components/PortfolioItem/PortfolioItem';
-import portfolioActiveCitizenImage from '../src/images/portfolioActiveCitizenImage.png';
 
 export const PortfolioContainer = styled.div`
   width: 100%;

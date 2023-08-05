@@ -13,12 +13,13 @@ const Main = styled.div`
   flex-direction: column;
   color: white;
   gap: 25px;
+  width: 100%;
 `;
 
 const HomePage = () => {
   return (
     <Main>
-      <AboutMeArticle text={aboutMeText} />
+      <AboutMeArticle />
       <MainContacts />
       <MainWhereAmi />
       <MainWorkExperience />

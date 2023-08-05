@@ -18,7 +18,7 @@ const LinkContainer = styled.div`
   transition: all 0.5s ease-in-out;
   font-weight: 500;
   color: #d2b48c !important;
-
+  cursor: pointer;
   & div {
     width: 20px;
     display: flex;
