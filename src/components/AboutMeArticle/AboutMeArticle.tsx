@@ -11,11 +11,11 @@ const AboutMeArticle: FC = () => {
       <AboutMeParagraph>
         <AboutMeSentence>
           <AboutMeSentence>
-            Владею основными технологиями web-разработки: <AccentText text='JS' />,{' '}
-            <AccentText text='HTML' />, <AccentText text='CSS' />, <AccentText text='React' />,{' '}
-            <AccentText text='TypeScript' />, <AccentText text='Redux' />,{' '}
-            <AccentText text='Redux-Toolkit' />, <AccentText text='MobX' />,{' '}
-            <AccentText text='Ant Design' />, <AccentText text='Mui' />,{' '}
+            Владею основными технологиями web-разработки:
+            <AccentText text='JS' />, <AccentText text='HTML' />, <AccentText text='CSS' />,{' '}
+            <AccentText text='React' />, <AccentText text='TypeScript' />,{' '}
+            <AccentText text='Redux' />, <AccentText text='Redux-Toolkit' />,{' '}
+            <AccentText text='MobX' />, <AccentText text='Ant Design' />, <AccentText text='Mui' />,{' '}
             <AccentText text='Vue.js' />, <AccentText text='Git' />, <AccentText text='Node.js' />,{' '}
             <AccentText text='Express' />.
           </AboutMeSentence>

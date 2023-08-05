@@ -19,7 +19,7 @@ export const AboutMeParagraph = styled.p`
   word-wrap: break-word;
 `;
 
-export const AboutMeSentence = styled.p`
+export const AboutMeSentence = styled.span`
   margin: 0;
   word-wrap: break-word;
 `;

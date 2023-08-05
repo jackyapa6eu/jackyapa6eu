@@ -50,6 +50,7 @@ const UnderDevelopmentContainer = styled.div<IUnderDevelopmentContainer>`
     height: fit-content;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   & .under-development-content__close-button {

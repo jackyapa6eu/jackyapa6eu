@@ -1,15 +1,4 @@
 import styled from 'styled-components';
-import { FC, ReactNode } from 'react';
-
-interface ICard {
-  rotation: {
-    x: number;
-    y: number;
-  };
-  // children: ReactNode;
-  // onMouseMove: (event: MouseEvent) => void;
-  // onMouseLeave: () => void;
-}
 
 export const Card = styled.div`
   display: grid;

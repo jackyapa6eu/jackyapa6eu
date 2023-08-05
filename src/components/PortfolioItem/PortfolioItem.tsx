@@ -1,4 +1,4 @@
-import React, { FC, memo, MouseEventHandler, useState } from 'react';
+import React, { FC, memo, useState } from 'react';
 import { Card, CardImage, CardImageContainer, CardTitle } from './styles';
 import portfolioActiveCitizenImage from '../../images/portfolioActiveCitizenImage.png';
 

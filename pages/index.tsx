@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 import AboutMeArticle from '../src/components/AboutMeArticle/AboutMeArticle';
-import { aboutMeText } from '../src/utils/constants';
 import MainContacts from '../src/components/MainContacts/MainContacts';
 import MainWorkExperience from '../src/components/MainWorkExperience';
 import MainLearningExperience from '../src/components/MainLearningExperience/MainLearningExperience';
