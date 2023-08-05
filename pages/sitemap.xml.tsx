@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { GetServerSideProps } from 'next';
 
-const Sitemap = () => {
+const SitemapXml = () => {
   return null;
 };
 
@@ -60,4 +60,4 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   };
 };
 
-export default Sitemap;
+export default SitemapXml;

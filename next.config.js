@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         source: '/sitemap.xml',
-        destination: '/api/sitemap',
+        destination: '/sitemap',
       },
     ];
   },
