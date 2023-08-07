@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 
-export const Card = styled.div`
+interface CardProps {
+  bg?: string;
+  border?: string;
+  shadow?: string;
+  hborder?: string;
+}
+
+export const Card = styled.div<CardProps>`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 120px 1fr 24px;
@@ -48,9 +55,6 @@ export const Card = styled.div`
     'description description description description'
     'deployLink deployLink githubLink githubLink';
     }
-    }
-      outline: 1px solid red;
-    }
 `;
 
 export const CardImageContainer = styled.div`
@@ -82,10 +86,15 @@ export const CardTitle = styled.p`
   font-weight: 500;
 `;
 
-export const CardLink = styled.a`
+interface CardLinkProps {
+  gridarea?: string;
+  border?: string;
+  justify?: string;
+  align?: string;
+}
+
+export const CardLink = styled.a<CardLinkProps>`
   text-decoration: none;
-  // padding-bottom: 3px;
-  // border-bottom: ${(p) => `2px solid ${p.border ?? '#83c5be'}`};
   grid-area: ${(p) => p.gridarea ?? ''};
   width: fit-content;
   height: fit-content;
