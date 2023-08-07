@@ -93,7 +93,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         onClick={handleUnderDevelopmentClick}
       >
         <div className='under-development-content'>
-          <span>Сайт находится в стадии разработки</span>
+          <span>Сайт находится на стадии разработки</span>
           <Button size='small' className='under-development-content__close-button'>
             Понятно
           </Button>
