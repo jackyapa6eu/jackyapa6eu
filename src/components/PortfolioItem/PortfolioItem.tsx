@@ -1,12 +1,23 @@
 import React, { FC, memo, useState } from 'react';
-import { Card, CardImage, CardImageContainer, CardTitle } from './styles';
+import { Card, CardImage, CardImageContainer, CardTitle, CardLink } from './styles';
 import portfolioActiveCitizenImage from '../../images/portfolioActiveCitizenImage.png';
+import Link from 'next/link';
 
 interface IPortfolioItem {
-  title: string;
+  card: {
+    id: number;
+    title: string;
+    bg: string;
+    border: string;
+    hBorder: string;
+    shadow: string;
+    deployLink: string;
+    githubLink: string;
+    description: string;
+  };
 }
 
-const PortfolioItem: FC<IPortfolioItem> = ({ title }) => {
+const PortfolioItem: FC<IPortfolioItem> = ({ card }) => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (
@@ -30,6 +41,7 @@ const PortfolioItem: FC<IPortfolioItem> = ({ title }) => {
   const handleMouseLeave = () => {
     setRotation({ x: 0, y: 0 });
   };
+
   return (
     <Card
       style={{
@@ -37,11 +49,37 @@ const PortfolioItem: FC<IPortfolioItem> = ({ title }) => {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      bg={card.bg}
+      border={card.border}
+      hborder={card.hBorder}
+      shadow={card.shadow}
     >
       <CardImageContainer>
-        <CardImage src={portfolioActiveCitizenImage.src} alt={title} />
+        <CardImage src={portfolioActiveCitizenImage.src} alt={card.title} />
       </CardImageContainer>
-      <CardTitle>{title}</CardTitle>
+      <CardTitle>{card.title}</CardTitle>
+      <p style={{ margin: '0', gridArea: 'description', paddingBottom: '3px' }}>
+        {card.description}
+      </p>
+      <CardLink
+        href={card.deployLink}
+        gridarea='deployLink'
+        border={card.border}
+        target='_blank'
+        rel='noreferrer'
+      >
+        Открыть сайт
+      </CardLink>
+      <CardLink
+        href={card.githubLink}
+        gridarea='githubLink'
+        border={card.border}
+        target='_blank'
+        rel='noreferrer'
+        justify='end'
+      >
+        Посмотреть код
+      </CardLink>
     </Card>
   );
 };

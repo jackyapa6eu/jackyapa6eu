@@ -1,71 +1,78 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
 export const Card = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'image title';
-  gap: 15px;
+  grid-template-rows: 120px 1fr 24px;
+  grid-template-areas:
+    'image title'
+    'description description'
+    'deployLink githubLink';
   position: relative;
+  column-gap: 15px;
   transition: all 0.2s ease;
-  background: #83c5be;
+  background: ${(p) => p.bg ?? 'gray'};
   padding: 15px;
   width: 100%;
   height: 300px;
   border-radius: 5px;
-  border: 2px solid #83c5be;
+  border: ${(p) => `2px solid ${p.border ?? '#83c5be'}`};
   cursor: pointer;
   transform-style: preserve-3d;
-  box-shadow: 0px 0px 0px 0px #d2b48c;
+  box-shadow: ${(p) => `0px 0px 0px 0px ${p.shadow ?? '#d2b48c'}`};
 
   &:hover {
-    box-shadow: 0px 0px 5px 5px #ff7f50;
-    border: 2px solid #dcdcdc;
+    box-shadow: ${(p) => `0px 0px 5px 5px ${p.shadow ?? '#ff7f50'}`};
+    border: ${(p) => `2px solid ${p.hborder ?? '#dcdcdc'}`};
   }
 
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: min-content;
-    grid-template-areas:
-      'image image .'
-      'title title title';
+  @media screen and (max-width: 580px) {
+    & {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: min-content min-content 1fr 24px;
+      row-gap: 10px;
+      grid-template-areas:
+    'image image image .'
+    'title title title title'
+    'description description description description'
+    'deployLink deployLink githubLink githubLink';
+    }
   }
 
-  @media screen and (max-width: 500px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: min-content;
-    grid-template-areas:
-      'image image image .'
-      'title title title .';
-  }
-
-  @media screen and (max-width: 440px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content;
-    grid-template-areas:
-      'image'
-      'title';
-  }
+  @media screen and (max-width: 460px) {
+    & {
+      grid-template-areas:
+    'image image image image'
+    'title title title title'
+    'description description description description'
+    'deployLink deployLink githubLink githubLink';
+    }
+    }
+      outline: 1px solid red;
+    }
 `;
 
 export const CardImageContainer = styled.div`
   height: fit-content;
   position: relative;
   grid-area: image;
+  max-height: 100%;
+  left: 0;
+  top: -25px;
+  &:hover img {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 export const CardImage = styled.img`
   width: 100%;
-  // height: 170px;
   position: relative;
-  left: 0;
-  top: -25px;
+
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   object-fit: contain;
   object-position: top;
   transition: all 0.3s ease;
-  &:hover {
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
-  }
 `;
 
 export const CardTitle = styled.p`
@@ -73,4 +80,30 @@ export const CardTitle = styled.p`
   margin: 0;
   font-size: 14px;
   font-weight: 500;
+`;
+
+export const CardLink = styled.a`
+  text-decoration: none;
+  // padding-bottom: 3px;
+  // border-bottom: ${(p) => `2px solid ${p.border ?? '#83c5be'}`};
+  grid-area: ${(p) => p.gridarea ?? ''};
+  width: fit-content;
+  height: fit-content;
+  justify-self: ${(p) => p.justify ?? 'start'};
+  align-self: ${(p) => p.align ?? 'end'};
+  box-shadow: ${(p) => `0 6px 10px ${p.border ?? '#ff7f50'}`};
+  transition: all 0.3s ease;
+  padding: 0.15em 0.35em;
+  &:hover {
+    box-shadow: ${(p) => `0 3px 3px ${p.border ?? '#ff7f50'}`};
+  }
+
+  @media screen and (max-width: 470px) {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 420px) {
+    padding: 0 7px;
+  }
 `;

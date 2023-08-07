@@ -98,7 +98,6 @@ const NavigationMenu: FC = () => {
       <NavigationButtonsContainer>
         <NavigationButton title='Обо мне' icon={<AboutMeIcon />} path='/' />
         <NavigationButton title='Портфолио' icon={<PortfolioIcon />} path='/portfolio' />
-        <NavigationButton title='Контакты' icon={<ContactsIcon />} path='/contacts' />
         <NavigationButton title='Отзывы студентов' icon={<FeedbackIcon />} path='/feedback' />
         <NavigationButton title='Медиа' icon={<MediaIcon />} path='/media' />
         <NavigationButton title='Виш лист' icon={<WishListIcon />} path='/wishlist' />
