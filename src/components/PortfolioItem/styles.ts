@@ -28,7 +28,7 @@ export const Card = styled.div<CardProps>`
   cursor: pointer;
   transform-style: preserve-3d;
   box-shadow: ${(p) => `0px 0px 0px 0px ${p.shadow ?? '#d2b48c'}`};
-
+  color: black;
   &:hover {
     box-shadow: ${(p) => `0px 0px 5px 5px ${p.shadow ?? '#ff7f50'}`};
     border: ${(p) => `2px solid ${p.hborder ?? '#dcdcdc'}`};
@@ -103,6 +103,7 @@ export const CardLink = styled.a<CardLinkProps>`
   box-shadow: ${(p) => `0 6px 10px ${p.border ?? '#ff7f50'}`};
   transition: all 0.3s ease;
   padding: 0.15em 0.35em;
+  color: ${(p) => p.border ?? 'black'};
   &:hover {
     box-shadow: ${(p) => `0 3px 3px ${p.border ?? '#ff7f50'}`};
   }

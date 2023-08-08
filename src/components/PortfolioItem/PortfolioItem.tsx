@@ -1,7 +1,5 @@
 import React, { FC, memo, useState } from 'react';
 import { Card, CardImage, CardImageContainer, CardTitle, CardLink } from './styles';
-import portfolioActiveCitizenImage from '../../images/portfolioActiveCitizenImage.png';
-import Link from 'next/link';
 
 interface IPortfolioItem {
   card: {
@@ -11,8 +9,9 @@ interface IPortfolioItem {
     border: string;
     hBorder: string;
     shadow: string;
-    deployLink: string;
-    githubLink: string;
+    deployLink?: string;
+    githubLink?: string;
+    previewLink: string;
     description: string;
   };
 }
@@ -55,31 +54,36 @@ const PortfolioItem: FC<IPortfolioItem> = ({ card }) => {
       shadow={card.shadow}
     >
       <CardImageContainer>
-        <CardImage src={portfolioActiveCitizenImage.src} alt={card.title} />
+        <CardImage src={card.previewLink} alt={card.title} />
       </CardImageContainer>
       <CardTitle>{card.title}</CardTitle>
       <p style={{ margin: '0', gridArea: 'description', paddingBottom: '3px' }}>
         {card.description}
       </p>
-      <CardLink
-        href={card.deployLink}
-        gridarea='deployLink'
-        border={card.border}
-        target='_blank'
-        rel='noreferrer'
-      >
-        Открыть сайт
-      </CardLink>
-      <CardLink
-        href={card.githubLink}
-        gridarea='githubLink'
-        border={card.border}
-        target='_blank'
-        rel='noreferrer'
-        justify='end'
-      >
-        Посмотреть код
-      </CardLink>
+      {card.deployLink && (
+        <CardLink
+          href={card.deployLink}
+          gridarea='deployLink'
+          border={card.border}
+          target='_blank'
+          rel='noreferrer'
+        >
+          Открыть сайт
+        </CardLink>
+      )}
+
+      {card.githubLink && (
+        <CardLink
+          href={card.githubLink}
+          gridarea='githubLink'
+          border={card.border}
+          target='_blank'
+          rel='noreferrer'
+          justify='end'
+        >
+          Посмотреть код
+        </CardLink>
+      )}
     </Card>
   );
 };

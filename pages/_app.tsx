@@ -68,10 +68,10 @@ const UnderDevelopmentContainer = styled.div<IUnderDevelopmentContainer>`
 `;
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [underDevelopmentIsOpened, setunderDevelopmentIsOpened] = useState(true);
+  const [underDevelopmentIsOpened, setUnderDevelopmentIsOpened] = useState(true);
 
   const handleUnderDevelopmentClick = () => {
-    setunderDevelopmentIsOpened(!underDevelopmentIsOpened);
+    setUnderDevelopmentIsOpened(!underDevelopmentIsOpened);
   };
 
   const handleResize = () => {
