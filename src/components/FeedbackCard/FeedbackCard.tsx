@@ -1,6 +1,7 @@
 import { FC, memo, useEffect, useRef, useState } from 'react';
 import React from 'react';
 import styled from 'styled-components';
+import ArrowIcon from '../../icons/ArrowIcon';
 
 interface TextContainerProps {
   h: number; // Пропс для высоты контейнера
@@ -28,6 +29,7 @@ const Card = styled.div`
 
 const ShowBtn = styled.button`
   display: flex;
+  padding: 4px;
   align-items: center;
   justify-content: center;
   background: none;
@@ -48,6 +50,10 @@ const ShowBtn = styled.button`
     box-shadow: 0 0 3px #83c5be;
     background: #83c5be;
     color: #1a1a1a;
+  }
+
+  &:hover path {
+    fill: #1a1a1a;
   }
 
   span {
@@ -114,9 +120,10 @@ const FeedbackCard: FC<Ifeedback> = ({ feedback }) => {
     <Card>
       {canBeOpened && (
         <ShowBtn type='button' onClick={handleClick}>
-          <span>{isOpened ? '🠕' : '🠗'}</span>
+          <ArrowIcon color='#83c5be' bottom={!isOpened} />
         </ShowBtn>
       )}
+
       <RatingBox>
         <span>{feedback.rating}</span>
       </RatingBox>
