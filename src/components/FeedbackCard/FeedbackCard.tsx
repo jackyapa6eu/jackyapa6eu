@@ -2,6 +2,10 @@ import { FC, memo, useEffect, useRef, useState } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 
+interface TextContainerProps {
+  h: number; // Пропс для высоты контейнера
+}
+
 const Card = styled.div`
   position: relative;
   width: 100%;
@@ -53,7 +57,7 @@ const ShowBtn = styled.button`
   }
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled.div<TextContainerProps>`
   height: ${(p) => `${p.h}px`};
   overflow: hidden;
   transition: all 0.3s ease;
@@ -86,20 +90,24 @@ interface Ifeedback {
 }
 
 const FeedbackCard: FC<Ifeedback> = ({ feedback }) => {
-  const textRef = useRef();
+  const textRef = useRef<HTMLParagraphElement>(null!);
   const [canBeOpened, setCanBeOpened] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [textContainerHeight, setTextContainerHeight] = useState(30);
 
   const handleClick = () => {
-    const newHeight = isOpened ? 30 : textRef.current.scrollHeight;
-
-    setTextContainerHeight(newHeight);
-    setIsOpened(!isOpened);
+    if (textRef.current) {
+      const newHeight = isOpened ? 30 : textRef.current.scrollHeight;
+      setTextContainerHeight(newHeight);
+      setIsOpened(!isOpened);
+    }
   };
 
   useEffect(() => {
-    setCanBeOpened(textRef.current.scrollHeight > 30);
+    if (textRef.current) {
+      // Проверяем, что textRef.current существует
+      setCanBeOpened(textRef.current.scrollHeight > 30);
+    }
   }, []);
 
   return (
