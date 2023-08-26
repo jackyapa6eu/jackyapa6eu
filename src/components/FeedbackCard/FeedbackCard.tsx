@@ -2,6 +2,7 @@ import { FC, memo, useEffect, useRef, useState } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import ArrowIcon from '../../icons/ArrowIcon';
+import StarIcon from '../../icons/StarIcon';
 
 interface TextContainerProps {
   h: number; // Пропс для высоты контейнера
@@ -15,7 +16,7 @@ const Card = styled.div`
   font-size: 13px;
   white-space: pre-line;
   border-radius: 4px;
-  padding: 25px 30px 5px 30px;
+  padding: 30px 30px 5px 30px;
   transition: height 0.3s ease;
   overflow: hidden;
   height: fit-content;
@@ -74,14 +75,11 @@ const RatingBox = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 2px;
-  top: 2px;
-  width: 25px;
   height: 25px;
+  left: 0px;
+  top: 0px;
   border-radius: 5px;
   font-weight: 500;
-  // outline: 1px solid white;d2b48c
-  box-shadow: 0 0 2px #83c5be inset;
   text-align: center;
   span {
     color: #83c5be;
@@ -125,7 +123,9 @@ const FeedbackCard: FC<Ifeedback> = ({ feedback }) => {
       )}
 
       <RatingBox>
-        <span>{feedback.rating}</span>
+        {Array.from({ length: 5 }, (_, index) => (
+          <StarIcon key={index} fill={index + 1 <= feedback.rating} />
+        ))}
       </RatingBox>
       <TextContainer className='review-summary' h={textContainerHeight}>
         <p ref={textRef}>{feedback.text}</p>
