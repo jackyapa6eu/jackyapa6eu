@@ -8,7 +8,7 @@ const SitemapXml = () => {
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const BASE_URL =
     process.env.NODE_ENV === 'production'
-      ? 'https://jackyapa6eu-v0-1.vercel.app/'
+      ? 'https://jackyapa6eu.vercel.app/'
       : 'http://localhost:3000';
 
   const products = []; // Здесь может быть вызов с любого API

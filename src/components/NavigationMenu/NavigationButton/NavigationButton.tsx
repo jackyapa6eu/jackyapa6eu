@@ -47,7 +47,6 @@ interface INavigationButton {
 }
 
 const NavigationButton: FC<INavigationButton> = ({ title, path = '#', icon }) => {
-  // console.log(location);
   return (
     <Link href={path}>
       <LinkContainer>

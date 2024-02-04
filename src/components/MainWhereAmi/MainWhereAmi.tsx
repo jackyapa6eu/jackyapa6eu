@@ -19,13 +19,13 @@ const MainWhereAmi = () => {
         <MapContainer>
           <Map
             defaultState={{
-              center: [43.23340384638418, 76.9574507651044],
+              center: [55.753987617453504, 37.6207735531773],
               zoom: 10,
             }}
             width='100%'
             height='100%'
           >
-            <Placemark geometry={[43.23340384638418, 76.9574507651044]} />
+            <Placemark geometry={[55.753987617453504, 37.6207735531773]} />
           </Map>
         </MapContainer>
       </YMaps>

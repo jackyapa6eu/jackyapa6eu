@@ -2,16 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface ModalState {
   isOpened: boolean;
-  // content: string | null;
 }
 
 const initialState: ModalState = {
   isOpened: false,
-  // content: null,
 };
 
 const modalSlice = createSlice({
-  name: 'modal',
+  name: 'suggestMusic',
   initialState,
   reducers: {
     openModal: (state: ModalState) => {
@@ -19,7 +17,6 @@ const modalSlice = createSlice({
     },
     closeModal: (state: ModalState) => {
       state.isOpened = false;
-      // state.content = null;
     },
   },
 });

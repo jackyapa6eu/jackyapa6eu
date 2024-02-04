@@ -99,8 +99,8 @@ const NavigationMenu: FC = () => {
         <NavigationButton title='Обо мне' icon={<AboutMeIcon />} path='/' />
         <NavigationButton title='Портфолио' icon={<PortfolioIcon />} path='/portfolio' />
         <NavigationButton title='Отзывы студентов' icon={<FeedbackIcon />} path='/feedback' />
-        <NavigationButton title='Медиа' icon={<MediaIcon />} path='/media' />
-        <NavigationButton title='Виш лист' icon={<WishListIcon />} path='/wishlist' />
+        <NavigationButton title='Музыка' icon={<MediaIcon />} path='/media/music' />
+        {/*<NavigationButton title='Виш лист' icon={<WishListIcon />} path='/wishlist' />*/}
       </NavigationButtonsContainer>
 
       <ContactsContainer>
