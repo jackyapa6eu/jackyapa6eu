@@ -1,36 +1,16 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
 import { observer } from 'mobx-react-lite';
-import appStore from './stores';
-import { Button } from 'antd';
-import './styles/main.scss';
+import './styles/global/index.scss';
+
+import styles from './app.module.scss';
 
 const App = observer(() => {
-  const { count, increment } = appStore;
   return (
-    <main>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <Button size="small" onClick={increment}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </main>
+    <div className={styles.App}>
+      <article className={styles.App__main_article}>
+        <h1>[Денисов Евгений]</h1>
+        <p>Frontend разработчик</p>
+      </article>
+    </div>
   );
 });
 
