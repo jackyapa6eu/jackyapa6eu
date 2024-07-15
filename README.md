@@ -6,7 +6,9 @@ Frontend Developer
 
 ## Обо мне
 
-Владею основными технологиями web-разработки: JS, HTML, CSS, React, TypeScript, Redux, Redux-Toolkit, MobX, Ant Design, Mui, Vue.js, Git, Node.js, Express.
+Владею основными технологиями web-разработки:  
+JS, HTML, CSS, React, TypeScript, Redux, Redux-Toolkit,  
+MobX, Ant Design, Mui, Vue.js, Git, Node.js, Express.
 
 ## Опыт работы
 
@@ -21,6 +23,8 @@ Frontend Developer
 
 **Технологии:**
 - React, Typescript, MobX, JavaScript
+---
+
 
 ### Яндекс.Практикум
 **Период работы:** Ноябрь 2021 - настоящее время
@@ -35,6 +39,8 @@ Frontend Developer
 
 **Технологии:**
 - Javascript, HTML5, CSS3
+---
+
 
 ### I-TECH
 **Период работы:** Декабрь 2022 - июль 2024
@@ -51,6 +57,8 @@ Frontend Developer
 
 **Технологии:**
 - React, MobX, Ant design
+---
+
 
 ## Обучение
 
@@ -60,10 +68,13 @@ Frontend Developer
 **Роль:** Frontend-разработчик
 
 **Обязанности и достижения:**
-- Разработка проекта в команде из 8 человек (2 frontend, 2 backend, 2 тестировщика и 2 аналитика) по SCRUM.
+- Разработка проекта в команде из 8 человек:  
+(2 frontend, 2 backend, 2 тестировщика и 2 аналитика) по SCRUM.
 
 **Технологии:**
 - React, Redux Toolkit + RTK Query, And Design.
+---
+
 
 ### Сбермаркет
 **Период:** Декабрь 2021 - март 2022
@@ -86,7 +97,7 @@ Frontend Developer
 ## Контакты
 
 - **Email:** [yapa6eu@gmail.com]
-- **LinkedIn:** [https://www.linkedin.com/in/eugene-denisov-30a092207/]
-- **Telegram:** [https://t.me/jackyapa6eu]
+- **[LinkedIn](https://www.linkedin.com/in/eugene-denisov-30a092207/)**
+- **[Telegram](https://t.me/jackyapa6eu)**
 
 ---
