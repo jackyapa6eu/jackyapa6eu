@@ -9,11 +9,11 @@ class AppStore {
 
   increment = () => {
     this.count += 1;
-  }
+  };
 
   decrement = () => {
     this.count -= 1;
-  }
+  };
 }
 
 const appStore = new AppStore();

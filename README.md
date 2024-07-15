@@ -1,30 +1,92 @@
-# React + TypeScript + Vite
+# [Денисов Евгений]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend Developer
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Обо мне
 
-## Expanding the ESLint configuration
+Владею основными технологиями web-разработки: JS, HTML, CSS, React, TypeScript, Redux, Redux-Toolkit, MobX, Ant Design, Mui, Vue.js, Git, Node.js, Express.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Опыт работы
 
-- Configure the top-level `parserOptions` property like this:
+### GARPIX
+**Период работы:** Июль 2024 - настоящее время
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+**Должность:** Middle frontend разработчик
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Разработка и поддержка веб-приложений с использованием React и Redux.
+- Оптимизация производительности и улучшение пользовательского опыта.
+- Внедрение новых функциональностей и модулей на основе технического задания.
+
+**Технологии:**
+- React, Typescript, MobX, JavaScript
+
+### Яндекс.Практикум
+**Период работы:** Ноябрь 2021 - настоящее время
+
+**Должность:** Код ревьюер
+
+**Обязанности и достижения:**
+- Проверка практических работ студентов, проходящих курс "Веб-разработчик".
+- Выявление ошибок, предоставление решений и рекомендаций по рефакторингу кода.
+- Обеспечение качественной обратной связи для улучшения навыков студентов.
+- Помощь студентам в освоении лучших практик разработки и повышении уровня их кода.
+
+**Технологии:**
+- Javascript, HTML5, CSS3
+
+### I-TECH
+**Период работы:** Декабрь 2022 - июль 2024
+
+**Должность:** Frontend-разработчик
+
+**Обязанности и достижения:**
+- Разработка корпоративной системы для внутреннего использования.
+- Проектирование и реализация новых компонентов.
+- Менторство и проведение код-ревью.
+- Оптимизация и глобальный рефакторинг существующего функционала.
+- Создание библиотеки компонентов, что ускорило решение новых бизнес-задач на 40%.
+- Успешный онбординг трёх новых сотрудников.
+
+**Технологии:**
+- React, MobX, Ant design
+
+## Обучение
+
+### bootcamp red_mad_robot
+**Период:** Октябрь 2022 - ноябрь 2022
+
+**Роль:** Frontend-разработчик
+
+**Обязанности и достижения:**
+- Разработка проекта в команде из 8 человек (2 frontend, 2 backend, 2 тестировщика и 2 аналитика) по SCRUM.
+
+**Технологии:**
+- React, Redux Toolkit + RTK Query, And Design.
+
+### Сбермаркет
+**Период:** Декабрь 2021 - март 2022
+
+**Роль:** Стажер frontend разработчик
+
+**Обязанности и достижения:**
+- Обучение
+- Командная разработка проекта
+
+**Технологии:**
+- Html, Css, Javascript, React, Redux, Redux-toolkit.
+
+## Навыки
+
+- **React**, **JavaScript**, **TypeScript**, **MobX**, **Redux**, **Redux-Toolkit**, **HTML**, **CSS**, **Figma**, **Vue**, **Node.js**, 
+
+
+
+## Контакты
+
+- **Email:** [yapa6eu@gmail.com]
+- **LinkedIn:** [https://www.linkedin.com/in/eugene-denisov-30a092207/]
+- **Telegram:** [https://t.me/jackyapa6eu]
+
+---
