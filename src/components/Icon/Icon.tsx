@@ -9,7 +9,7 @@ export type IconName = keyof typeof icons;
 
 interface IIconProps extends React.ComponentProps<'div'> {
   name: IconName;
-  size?: 'smaller' | 'small' | 'medium' | 'large';
+  size?: 'smaller' | 'small' | 'medium' | 'large' | 'xl';
   slot?: string;
   className?: string;
   rotate?: number;
