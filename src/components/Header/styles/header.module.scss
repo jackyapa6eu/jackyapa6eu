@@ -1,0 +1,35 @@
+.header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: max-content 1fr;
+  justify-items: end;
+  column-gap: 16px;
+  padding: 8px 16px;
+
+  &__navlink {
+    width: max-content;
+    text-decoration: none;
+
+    &__wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 120px;
+    }
+
+    &__text {
+      text-decoration: none;
+    }
+  }
+  &__burgerWrapper {
+    display: none;
+  }
+
+  @media screen and (max-width: 470px) {
+    grid-template-columns: max-content 1fr;
+    &__burgerWrapper {
+      display: flex;
+    }
+  }
+
+}

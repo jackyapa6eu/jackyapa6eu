@@ -6,11 +6,13 @@ import styles from '../../app.module.scss';
 interface INavigateLinkProps {
   to: string;
   children: ReactNode;
+  fullWidth?: boolean;
 }
 
 export const NavigateLink: FC<INavigateLinkProps> = ({
   to,
   children,
+  fullWidth = false,
 }): ReactElement => {
   return (
     <NavLink
@@ -18,6 +20,7 @@ export const NavigateLink: FC<INavigateLinkProps> = ({
       className={({ isActive }) =>
         classNames({
           [styles.link]: true,
+          [styles.link__fullWidth]: fullWidth,
           [styles.hover]: true,
           [styles.hover__active]: isActive,
         })

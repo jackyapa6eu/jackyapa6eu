@@ -1,8 +1,13 @@
 .links {
   width: max-content;
   text-decoration: none;
+  display: flex;
 
   &__text {
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 470px){
+    display: none;
   }
 }

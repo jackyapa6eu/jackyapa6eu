@@ -1,18 +1,8 @@
 import { FC, ReactElement } from 'react';
 import { NavigateLink } from '../NavigateLink';
+import { links } from '../../const';
 
 import style from './styles/links.module.scss';
-
-type ILink = {
-  name: string;
-  to: string;
-};
-
-const links: ILink[] = [
-  { name: 'ОБО МНЕ', to: 'about' },
-  { name: 'МЕДИА', to: 'media' },
-  { name: 'ОТЗЫВЫ', to: 'feedback' },
-];
 
 export const Navigation: FC = (): ReactElement => {
   return (

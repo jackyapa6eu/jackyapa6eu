@@ -1,55 +1,37 @@
 import { observer } from 'mobx-react-lite';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-} from 'react-router-dom';
-import './styles/global/index.scss';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
-import styles from './app.module.scss';
-import { Icon } from './components/Icon';
-import { NavigateLink } from './components/NavigateLink';
-import { Navigation } from './components/Navigation';
-// import style from './components/Icon/styles/icon.module.scss';
+import { DefaultLayout } from './layouts/DefaultLayout';
+import { MainPage } from './pages/MainPage';
+
+import './styles/global/index.scss';
 
 const App = observer(() => {
   return (
-    <Router>
-      <div className={styles.App}>
-        <header className={styles.Header}>
-          <NavigateLink to="/">
-            <Icon name="Logo" size="xl" />
-          </NavigateLink>
-
-          <Navigation />
-          <Icon
-            name="BurgerMenu"
-            size="large"
-            clickCallback={() => {
-              console.log('click');
-            }}
+    <HelmetProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/about"
+            element={
+              <DefaultLayout>
+                <div>about</div>
+              </DefaultLayout>
+            }
           />
-        </header>
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <article className={styles.App__main_article}>
-                    <h1>Денисов Евгений</h1>
-                    <p className={styles.hover}>Frontend разработчик</p>
-                  </article>
-                </>
-              }
-            />
-            <Route path="/about" element={<div>about</div>} />
-            <Route path="*" element={<div>404</div>} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+          <Route
+            path="*"
+            element={
+              <DefaultLayout>
+                <div>404</div>
+              </DefaultLayout>
+            }
+          />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   );
 });
 
