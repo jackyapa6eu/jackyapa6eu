@@ -1,0 +1,43 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 8px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.07);
+    gap: 8px;
+    width: 360px;
+    max-width: 100%;
+  }
+
+  &__link {
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    padding: 0;
+  }
+
+  &__link:hover {
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 470px) {
+    gap: 8px;
+  }
+}

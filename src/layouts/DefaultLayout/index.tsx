@@ -6,7 +6,7 @@ export const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.default}>
       <Header />
-      <main>
+      <main className={styles.main}>
         <div className={styles.main__content}>{children}</div>
       </main>
     </div>

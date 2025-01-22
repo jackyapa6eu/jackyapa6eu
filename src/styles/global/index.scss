@@ -1,2 +1,6 @@
-@import "./normalize";
-@import "./variables";
+@import './normalize';
+@import './variables';
+
+.ant-form-item {
+  margin: 0;
+}

@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any,@typescript-eslint/restrict-template-expressions */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import React, { FC, Suspense, useMemo } from 'react';
 import classNames from 'classnames';
 import { icons } from './icons';

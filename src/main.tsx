@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { initializeApp } from 'firebase/app';
+import { ConfigProvider } from 'antd';
+import ruRU from 'antd/locale/ru_RU';
+
 import './index.css';
 
 (function () {
@@ -21,7 +24,9 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <App />
+      <ConfigProvider locale={ruRU}>
+        <App />
+      </ConfigProvider>
     </React.StrictMode>,
   );
 }

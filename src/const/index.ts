@@ -1,8 +1,3 @@
-import { ILink } from '../interfaces';
-/* Навигация */
+import { IRoute } from '../interfaces';
 
-export const links: ILink[] = [
-  { name: 'ОБО МНЕ', to: 'about' },
-  { name: 'МЕДИА', to: 'media' },
-  { name: 'ОТЗЫВЫ', to: 'feedback' },
-];
+export const ROUTES: IRoute[] = [{ name: 'ОБО МНЕ', to: '/about' }];

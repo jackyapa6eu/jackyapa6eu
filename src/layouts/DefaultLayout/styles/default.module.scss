@@ -1,6 +1,7 @@
 .default {
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-height: 100dvh;
   box-sizing: border-box;
   font-family: 'Droid Sans Mono', monospace;
@@ -12,5 +13,15 @@
     flex-direction: column;
     align-items: center;
     padding-top: 10vh;
+  }
+}
+
+.main {
+  padding: 16px;
+  max-width: 1200px;
+  width: 100%;
+
+  @media screen and (max-width: 470px) {
+    padding: 8px;
   }
 }

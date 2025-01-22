@@ -4,7 +4,9 @@
   grid-template-columns: max-content 1fr;
   justify-items: end;
   column-gap: 16px;
-  padding: 8px 16px;
+  padding: 8px 8px;
+  width: 100%;
+  max-width: 1200px;
 
   &__navlink {
     width: max-content;
@@ -23,6 +25,10 @@
   }
   &__burgerWrapper {
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 52px;
   }
 
   @media screen and (max-width: 470px) {
@@ -31,5 +37,4 @@
       display: flex;
     }
   }
-
 }

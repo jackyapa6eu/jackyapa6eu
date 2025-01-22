@@ -1,6 +1,6 @@
 /* Навигация */
 
-export type ILink = {
+export type IRoute = {
   name: string;
   to: string;
 };
