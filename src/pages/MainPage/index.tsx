@@ -11,7 +11,7 @@ export const MainPage = (): React.ReactElement => {
       <Helmet>
         <title>Денисов Евгений</title>
       </Helmet>
-      <Suspense fallback={<div>fallback</div>}>
+      <Suspense fallback={<div />}>
         <DefaultLayout>
           <Main />
         </DefaultLayout>

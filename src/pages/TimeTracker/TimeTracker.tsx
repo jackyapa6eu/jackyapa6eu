@@ -1,26 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access */
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
+import React, { FC, useEffect, useMemo, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { toJS } from 'mobx';
-import { Button, Form, Input, Select, message } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { format, startOfDay } from 'date-fns';
+import { useLocation } from 'react-router-dom';
 
-import { SignUp, SignIn, TimeCounter } from '../../components';
+import { TimeCounter, AccentText, AuthToUse } from '../../components';
 import timeTrackerStore from '../../stores/timeTrackerStore';
 
 import authStore from '../../stores/authStore';
 import { getTimeObject, getTimeStr } from '../../utils/helpers';
 import globalStyles from '../../styles/global/global.module.scss';
 import styles from './styles/tracker.module.scss';
-import { AccentText } from '../../components/AccentText';
-
-// import globalStyles from '../../app.module.scss';
+import { TextWithLinks } from '../../components/TextWithLinks';
 
 const TimeTracker: FC = observer(() => {
   const isSubscribed = useRef(false);
-
+  const location = useLocation();
   const [form] = Form.useForm();
-  const { user } = authStore;
+  const { user, logout } = authStore;
 
   const {
     startTrack,
@@ -37,7 +36,7 @@ const TimeTracker: FC = observer(() => {
   };
 
   const handleChangeName = async (event) => {
-    // await debouncedStartTrack({ name: event.target.value });
+    await debouncedStartTrack({ name: event.target.value });
   };
 
   const history = useMemo(() => {
@@ -69,7 +68,6 @@ const TimeTracker: FC = observer(() => {
   useEffect(() => {
     const unsubscribe = subscribeTimeTracking();
     isSubscribed.current = true;
-
     return () => {
       unsubscribe();
     };
@@ -86,19 +84,28 @@ const TimeTracker: FC = observer(() => {
         onFinish={handleSubmit}
         layout="vertical"
         className={styles.tracker__form}
+        disabled={user === null}
       >
         <Form.Item name="name" onChange={handleChangeName}>
-          <Input />
+          <Input placeholder="Введите название" />
         </Form.Item>
 
-        <TimeCounter timeStamp={timeTracking.startedAt || null} />
+        <div className={styles.tracker__itemsContainer}>
+          <TimeCounter timeStamp={timeTracking.startedAt || null} />
 
-        <Form.Item>
-          <Button type="default" htmlType="submit">
-            {timeTracking.inWork ? 'стоп' : 'старт'}
-          </Button>
-        </Form.Item>
+          <Form.Item>
+            <Button type="default" htmlType="submit">
+              {timeTracking.inWork ? 'стоп' : 'старт'}
+            </Button>
+          </Form.Item>
+        </div>
       </Form>
+      {user === null && (
+        <AuthToUse
+          text="Для того, чтобы использовать трекинг времени необходимо"
+          from={location.pathname}
+        />
+      )}
       <div className={styles.tracker__history}>
         {history.map(([day, dayData]) => (
           <div key={day} className={globalStyles.card}>
@@ -109,18 +116,28 @@ const TimeTracker: FC = observer(() => {
               </span>
             </h2>
             <div className={styles.tracker__timestamps}>
-              {dayData.items.map((el) => (
-                <p key={el.startedAt} className={styles.tracker__timestamp}>
-                  <span>{el.name === '' ? 'Без имени' : el.name}</span>
-                  <span>
-                    {format(new Date(el.startedAt), 'HH:mm')}-
-                    {format(new Date(el.finishedAt), 'HH:mm')}
-                  </span>
-                  <span>
-                    [{getTimeStr(getTimeObject(el.finishedAt - el.startedAt))}]
-                  </span>
-                </p>
-              ))}
+              {dayData.items.map((el) => {
+                return (
+                  <p key={el.startedAt} className={styles.tracker__timestamp}>
+                    <TextWithLinks
+                      text={el.name === '' ? 'Без названия' : el.name}
+                    />
+                    <span className={styles.tracker__timeWrapper}>
+                      <span>
+                        {format(new Date(el.startedAt), 'HH:mm')}-
+                        {format(new Date(el.finishedAt), 'HH:mm')}
+                      </span>
+                      <span>
+                        [
+                        {getTimeStr(
+                          getTimeObject(el.finishedAt - el.startedAt),
+                        )}
+                        ]
+                      </span>
+                    </span>
+                  </p>
+                );
+              })}
             </div>
           </div>
         ))}

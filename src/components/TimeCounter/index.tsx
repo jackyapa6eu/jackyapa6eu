@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { getTimeElapsed, getTimeStr } from '../../utils/helpers';
 import { observer } from 'mobx-react-lite';
 
@@ -7,20 +7,23 @@ interface ITimeCounterProps {
 }
 
 export const TimeCounter: FC<ITimeCounterProps> = observer(({ timeStamp }) => {
-  const [currentTime, setCurrentTime] = useState<string>('0:00:00');
+  const [currentTime, setCurrentTime] = useState<string>('00:00:00');
 
   const isTimerOn = useRef<boolean>(false);
   const timeStampRef = useRef<number | null>(null);
 
   const handleTime = () => {
     if (timeStampRef.current) {
-      setCurrentTime(getTimeStr(getTimeElapsed(timeStampRef.current)));
+      const time = getTimeStr(getTimeElapsed(timeStampRef.current));
+      setCurrentTime(time);
+      document.title = time;
       setTimeout(() => {
         isTimerOn.current = true;
         handleTime();
       }, 1000);
     } else {
-      setCurrentTime('0:00:00');
+      setCurrentTime('00:00:00');
+      document.title = 'Трекинг времени';
       isTimerOn.current = false;
     }
   };

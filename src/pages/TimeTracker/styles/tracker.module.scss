@@ -4,9 +4,16 @@
   align-items: start;
   flex-direction: column;
   gap: 16px;
-  width: 50%;
 
   &__form {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__itemsContainer {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -28,11 +35,52 @@
   &__timestamp {
     display: grid;
     gap: 10px;
-    grid-template-columns: 1fr max-content max-content;
+    grid-template-columns: 1fr max-content;
     margin: 0;
+    border-radius: 4px;
+    padding: 0 8px;
+    transition: all 0.5s ease;
+    word-break: break-all;
+    &:hover {
+      background-color: white;
+    }
+
+    a {
+      color: black;
+      font-weight: 500;
+      transition: opacity .3s ease;
+    }
+
+    a:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__timeWrapper {
+    display: flex;
+    gap: 10px;
   }
 
   @media (max-width: 980px) {
     width: 100%;
+  }
+
+  @media (max-width: 700px) {
+    &__form {
+      grid-template-columns: 1fr;
+    }
+
+    &__itemsContainer {
+      justify-self: flex-end;
+    }
+
+    &__timestamp {
+      grid-template-columns: 1fr;
+      background-color: white;
+    }
+
+    &__timeWrapper {
+      justify-self: flex-end;
+    }
   }
 }

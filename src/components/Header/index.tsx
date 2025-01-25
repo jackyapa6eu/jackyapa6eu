@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import { FC } from 'react';
 import { Icon, NavigateLink } from '../index';
 import { Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
@@ -20,7 +20,7 @@ const items: MenuProps['items'] = ROUTES.map(({ to, name }) => ({
   ),
 }));
 
-export const Header: FC = (): ReactElement => {
+export const Header: FC = () => {
   return (
     <header className={styles.header}>
       <NavigateLink to="/">

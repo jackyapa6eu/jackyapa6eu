@@ -109,16 +109,20 @@ class TimeTrackerStore {
     }
   };
 
-  debouncedStartTrack = debounce(
-    async (values: { name: string; timeStamp: number }) => {
+  debouncedStartTrack = debounce(async ({ name }: string) => {
+    if (this.timeTracking.inWork && authStore.user !== null) {
+      const uid: string = authStore.user.uid;
+      const db = getDatabase();
+      const dataRef = `users/${uid}/timeTracking/current/name`;
+      const updates = {};
+      updates[dataRef] = name;
       try {
-        await this.startTrack(values);
-      } catch (error) {
-        console.log(error);
+        await update(ref(db), updates);
+      } catch (e) {
+        /*empty */
       }
-    },
-    700,
-  );
+    }
+  }, 700);
 }
 
 const timeTrackerStore = new TimeTrackerStore();

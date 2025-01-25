@@ -1,17 +1,27 @@
 import { FC } from 'react';
 import { Button, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import authStore from '../../stores/authStore';
 import { IRegistrationFormValues } from '../../types';
 
 import styles from '../../pages/AuthPage/styles/auth.module.scss';
 
-export const SignIn: FC = () => {
-  const [form] = Form.useForm<IRegistrationFormValues>();
+interface ISignInProps {
+  from?: string | null;
+}
 
+export const SignIn: FC<ISignInProps> = ({ from }) => {
+  const [form] = Form.useForm<IRegistrationFormValues>();
+  const navigate = useNavigate();
   const { signIn } = authStore;
 
-  const handleSubmit = (values: IRegistrationFormValues) => {
-    void signIn(values);
+  const handleSubmit = async (values: IRegistrationFormValues) => {
+    try {
+      await signIn(values);
+      navigate(from || '/', { state: { from: null } });
+    } catch (e) {
+      /* empty */
+    }
   };
 
   return (

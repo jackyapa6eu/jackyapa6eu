@@ -8,6 +8,7 @@ import { ExperiencePlace } from './ExperiencePlace';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
 import { TimeCounter } from './TimeCounter';
+import { AuthToUse } from './AuthToUse';
 
 export {
   Navigation,
@@ -20,4 +21,5 @@ export {
   SignUp,
   SignIn,
   TimeCounter,
+  AuthToUse,
 };
