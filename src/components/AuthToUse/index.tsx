@@ -13,9 +13,8 @@ export const AuthToUse: FC<IAuthToUseProps> = ({
   from = '/',
 }) => (
   <p className={styles.authToUse}>
-    {text}
+    {text}{' '}
     <Link to="/auth" state={{ from }}>
-      {' '}
       Авторизоваться
     </Link>
   </p>

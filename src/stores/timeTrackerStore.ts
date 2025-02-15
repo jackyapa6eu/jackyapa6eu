@@ -5,6 +5,7 @@ import { debounce } from 'lodash';
 
 import authStore, { ITimeTracking, ITimeTrackingHistory } from './authStore';
 import { message } from 'antd';
+import { nanoid } from 'nanoid';
 
 const emptyTimeTracking = {
   inWork: false,
@@ -53,7 +54,11 @@ class TimeTrackerStore {
     return onValue(dataRef, this.onTimeTrackingChange);
   };
 
-  startTrack = async (values: { name: string; timeStamp: number }) => {
+  startTrack = async (values: {
+    name: string;
+    timeStamp: number;
+    id?: string;
+  }) => {
     const db = getDatabase();
     const timestamp = values.timeStamp ?? Date.now();
 
@@ -68,6 +73,7 @@ class TimeTrackerStore {
           inWork: true,
           startedAt: timestamp,
           name: values.name ?? '',
+          id: values.id ?? nanoid(),
         };
         await update(ref(db), updates);
         void message.success(`Трекинг времени запущен`);
@@ -84,22 +90,35 @@ class TimeTrackerStore {
     if (authStore.user !== null) {
       const uid: string = authStore.user.uid;
       const now = Date.now();
+      let reqBody;
 
-      const dataRef = `users/${uid}/timeTracking/current`;
-      const historyRef = `users/${uid}/timeTracking/history/${now}`;
+      const currentCopy = JSON.parse(JSON.stringify(this.timeTracking));
+      const historyItem = this.timeTrackingHistory?.[currentCopy.id];
+      currentCopy.finishedAt = now;
+      delete currentCopy.inWork;
+
+      if (historyItem) reqBody = JSON.parse(JSON.stringify(historyItem));
+      else {
+        reqBody = {
+          startedAt: currentCopy.startedAt,
+          name: currentCopy.name,
+          items: [],
+        };
+      }
+      reqBody.items.push(currentCopy);
+      reqBody.lastEdited = now;
+
+      const currentRef = `users/${uid}/timeTracking/current`;
+      const historyRef = `users/${uid}/timeTracking/history/${currentCopy.id}`;
       const updates = {};
 
       try {
-        updates[dataRef] = {
+        updates[currentRef] = {
           inWork: false,
           startedAt: null,
           name: '',
         };
-        updates[historyRef] = {
-          ...this.timeTracking,
-          inWork: false,
-          finishedAt: now,
-        };
+        updates[historyRef] = reqBody;
         await update(ref(db), updates);
         void message.success(`Трекинг времени остановлен`);
       } catch (e) {

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access */
-import React, { FC, useEffect, useMemo, useRef } from 'react';
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { toJS } from 'mobx';
-import { Button, Form, Input } from 'antd';
+import { Button, Collapse, Form, Input, Modal } from 'antd';
+import { nanoid } from 'nanoid';
 import { format, startOfDay } from 'date-fns';
 import { useLocation } from 'react-router-dom';
 
@@ -16,6 +17,8 @@ import styles from './styles/tracker.module.scss';
 import { TextWithLinks } from '../../components/TextWithLinks';
 
 const TimeTracker: FC = observer(() => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
   const isSubscribed = useRef(false);
   const location = useLocation();
   const [form] = Form.useForm();
@@ -30,9 +33,30 @@ const TimeTracker: FC = observer(() => {
     timeTrackingHistory,
   } = timeTrackerStore;
 
+  const showModal = (data) => {
+    setIsModalOpen(true);
+    setSelectedItem(data);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
+
   const handleSubmit = async (values): void => {
     if (timeTracking.inWork) await stopTrack();
     else await startTrack(values);
+  };
+
+  const handleOk = async () => {
+    setIsModalOpen(false);
+    await handleStart();
+    setSelectedItem(null);
+  };
+
+  const handleStart = async () => {
+    if (timeTracking.inWork) return;
+    await startTrack(selectedItem);
   };
 
   const handleChangeName = async (event) => {
@@ -42,27 +66,30 @@ const TimeTracker: FC = observer(() => {
   const history = useMemo(() => {
     if (!timeTrackingHistory) return [];
 
-    const grouped = Object.entries(
-      Object.values(timeTrackingHistory).reduce((acc, item) => {
-        const date = new Date(item.startedAt);
-        const start = startOfDay(date).getTime();
-        const diff = item.finishedAt - item.startedAt;
-        acc[start] ??= {
-          total: 0,
-          items: [],
-        };
-        acc[start].items.push(item);
-        acc[start].total += diff;
+    const days = {};
 
-        return acc;
-      }, {}),
-    ).map(([day, data]) => [
-      day,
-      { ...data, items: data.items.sort((b, a) => a.startedAt - b.startedAt) },
-    ]);
-    return grouped.sort(([dateA], [dateB]) => {
-      return Number(dateB) - Number(dateA);
+    Object.entries(timeTrackingHistory).forEach(([parentId, parentData]) => {
+      const parentDataCopy = JSON.parse(JSON.stringify(parentData));
+      parentDataCopy.total ??= 0;
+      parentDataCopy.parentId = parentId;
+
+      const date = new Date(parentDataCopy.startedAt);
+      const start = startOfDay(date).getTime();
+      days[start] ??= {
+        total: 0,
+        items: [],
+      };
+
+      parentDataCopy.items.forEach((item) => {
+        const diff = item.finishedAt - item.startedAt;
+        days[start].total += diff;
+        parentDataCopy.total += diff;
+      });
+
+      days[start].items.push(parentDataCopy);
     });
+
+    return Object.entries(days);
   }, [timeTrackingHistory]);
 
   useEffect(() => {
@@ -107,41 +134,191 @@ const TimeTracker: FC = observer(() => {
         />
       )}
       <div className={styles.tracker__history}>
-        {history.map(([day, dayData]) => (
-          <div key={day} className={globalStyles.card}>
-            <h2 className={globalStyles.card__title}>
-              <span>{format(new Date(Number(day)), 'dd.MM.yyyy')}</span>
-              <span style={{ marginLeft: 'auto' }}>
-                <AccentText text={getTimeStr(getTimeObject(dayData.total))} />
-              </span>
-            </h2>
-            <div className={styles.tracker__timestamps}>
-              {dayData.items.map((el) => {
-                return (
-                  <p key={el.startedAt} className={styles.tracker__timestamp}>
-                    <TextWithLinks
-                      text={el.name === '' ? 'Без названия' : el.name}
+        {history.map(([dayTimestamp, dayData]) => {
+          return (
+            <div key={dayTimestamp} className={globalStyles.card}>
+              <h2 className={globalStyles.card__title}>
+                <span>
+                  {format(new Date(Number(dayTimestamp)), 'dd.MM.yyyy')}
+                </span>
+                <span style={{ marginLeft: 'auto' }}>
+                  <AccentText text={getTimeStr(getTimeObject(dayData.total))} />
+                </span>
+              </h2>
+              <div className={styles.tracker__timestamps}>
+                {dayData.items.map((parent) => {
+                  return (
+                    <Collapse
+                      key={parent.parentId}
+                      ghost
+                      items={[
+                        {
+                          key: parent.parentId,
+                          label: (
+                            <p
+                              style={{
+                                margin: 0,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                fontWeight: 500,
+                              }}
+                            >
+                              {parent.name === ''
+                                ? 'Без названия'
+                                : parent.name}
+                              <AccentText
+                                text={getTimeStr(getTimeObject(parent.total))}
+                              />
+                            </p>
+                          ),
+                          children: (
+                            <div>
+                              {parent.items.map((elem) => {
+                                return (
+                                  <p
+                                    key={elem.startedAt}
+                                    className={styles.tracker__timestamp}
+                                    onClick={() => {
+                                      showModal({
+                                        ...elem,
+                                        id: parent.parentId,
+                                      });
+                                    }}
+                                  >
+                                    <TextWithLinks
+                                      text={
+                                        elem.name === ''
+                                          ? 'Без названия'
+                                          : elem.name
+                                      }
+                                    />
+                                    <span
+                                      className={styles.tracker__timeWrapper}
+                                    >
+                                      <span>
+                                        {format(
+                                          new Date(elem.startedAt),
+                                          'HH:mm',
+                                        )}
+                                        -
+                                        {format(
+                                          new Date(elem.finishedAt),
+                                          'HH:mm',
+                                        )}
+                                      </span>
+                                      <span>
+                                        [
+                                        {getTimeStr(
+                                          getTimeObject(
+                                            elem.finishedAt - elem.startedAt,
+                                          ),
+                                        )}
+                                        ]
+                                      </span>
+                                    </span>
+                                  </p>
+                                );
+                              })}
+                            </div>
+                          ),
+                        },
+                      ]}
                     />
-                    <span className={styles.tracker__timeWrapper}>
-                      <span>
-                        {format(new Date(el.startedAt), 'HH:mm')}-
-                        {format(new Date(el.finishedAt), 'HH:mm')}
-                      </span>
-                      <span>
-                        [
-                        {getTimeStr(
-                          getTimeObject(el.finishedAt - el.startedAt),
-                        )}
-                        ]
-                      </span>
-                    </span>
-                  </p>
-                );
-              })}
+                  );
+                  // return parent.items.map((elem) => {
+                  //   return (
+                  //     <p
+                  //       key={elem.startedAt}
+                  //       className={styles.tracker__timestamp}
+                  //     >
+                  //       <TextWithLinks
+                  //         text={elem.name === '' ? 'Без названия' : elem.name}
+                  //       />
+                  //       <span className={styles.tracker__timeWrapper}>
+                  //         <span>
+                  //           {format(new Date(elem.startedAt), 'HH:mm')}-
+                  //           {format(new Date(elem.finishedAt), 'HH:mm')}
+                  //         </span>
+                  //         <span>
+                  //           [
+                  //           {getTimeStr(
+                  //             getTimeObject(elem.finishedAt - elem.startedAt),
+                  //           )}
+                  //           ]
+                  //         </span>
+                  //       </span>
+                  //     </p>
+                  //   );
+                  // });
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
+
+        {/*<Collapse*/}
+        {/*  ghost*/}
+        {/*  items={history.map(([dayTimestamp, dayData]) => ({*/}
+        {/*    key: dayTimestamp,*/}
+        {/*    label: (*/}
+        {/*      <h2 className={globalStyles.card__title}>*/}
+        {/*          <span>*/}
+        {/*            {format(new Date(Number(dayTimestamp)), 'dd.MM.yyyy')}*/}
+        {/*          </span>*/}
+        {/*        <span style={{ marginLeft: 'auto' }}>*/}
+        {/*            <AccentText*/}
+        {/*              text={getTimeStr(getTimeObject(dayData.total))}*/}
+        {/*            />*/}
+        {/*          </span>*/}
+        {/*      </h2>*/}
+        {/*    ),*/}
+        {/*    children: <p>text</p>,*/}
+        {/*  }))}*/}
+        {/*/>*/}
+        {
+          /* history */ [].map(([day, dayData]) => (
+            <div key={day} className={globalStyles.card}>
+              <h2 className={globalStyles.card__title}>
+                <span>{format(new Date(Number(day)), 'dd.MM.yyyy')}</span>
+                <span style={{ marginLeft: 'auto' }}>
+                  <AccentText text={getTimeStr(getTimeObject(dayData.total))} />
+                </span>
+              </h2>
+              <div className={styles.tracker__timestamps}>
+                {dayData.items.map((el) => {
+                  return (
+                    <p key={el.startedAt} className={styles.tracker__timestamp}>
+                      <TextWithLinks
+                        text={el.name === '' ? 'Без названия' : el.name}
+                      />
+                      <span className={styles.tracker__timeWrapper}>
+                        <span>
+                          {format(new Date(el.startedAt), 'HH:mm')}-
+                          {format(new Date(el.finishedAt), 'HH:mm')}
+                        </span>
+                        <span>
+                          [
+                          {getTimeStr(
+                            getTimeObject(el.finishedAt - el.startedAt),
+                          )}
+                          ]
+                        </span>
+                      </span>
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+          ))
+        }
       </div>
+
+      <Modal
+        title={`Запустить трекинг ${selectedItem?.name}?`}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      ></Modal>
     </div>
   );
 });
